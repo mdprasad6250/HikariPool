@@ -3,7 +3,6 @@ package com.javaSpringProject.javaspringexample;
 import com.javaSpringProject.javaspringexample.Entity.Student;
 import com.javaSpringProject.javaspringexample.repository.StdRepo;
 import com.javaSpringProject.javaspringexample.service.StudentServiceImpl;
-import com.javaSpringProject.javaspringexample.services.StudentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -23,8 +22,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class StudentDataTests {
     Student student = new Student();
-    @Mock
-    StudentService studentservice;
     @InjectMocks
     StudentServiceImpl studentserviceimpl;
     @Mock

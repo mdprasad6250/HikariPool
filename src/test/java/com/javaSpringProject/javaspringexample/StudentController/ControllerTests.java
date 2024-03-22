@@ -1,9 +1,9 @@
 package com.javaSpringProject.javaspringexample.StudentController;
 
-import com.javaSpringProject.javaspringexample.controller.StudentController;
-import com.javaSpringProject.javaspringexample.services.StudentService;
 import com.javaSpringProject.javaspringexample.Dto.StudentDto;
 import com.javaSpringProject.javaspringexample.Entity.Student;
+import com.javaSpringProject.javaspringexample.controller.StudentController;
+import com.javaSpringProject.javaspringexample.service.StudentServiceImpl;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class ControllerTests {
 
     @Mock
-    StudentService studentservice;
+    StudentServiceImpl studentService;
     @InjectMocks
     StudentController studentcontroller;
     @Test
@@ -32,7 +32,7 @@ public class ControllerTests {
         studentDto.setStudentId(2);
         studentDto.setStudentName("Nikki");
         studentDto.setStudentMarks(65);
-        Mockito.when(studentservice.saveStudent(Mockito.any())).thenReturn((studentservice.saveStudent(students)));
+        Mockito.when(studentService.saveStudent(Mockito.any())).thenReturn((studentService.saveStudent(students)));
         Assertions.assertNotNull(studentcontroller.saveStudent(students));
     }
     }
