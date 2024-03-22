@@ -16,7 +16,7 @@ public class StudentRepoTest {
     public void saveStudentTest(){
          Student student = new Student();
          student.setStudentName("suma");
-         student.setStudentMarks(88);
+         student.setRank("88");
          student.setStudentId(5);
 
        //  when(stdRepo.save(any())).thenReturn(student1);

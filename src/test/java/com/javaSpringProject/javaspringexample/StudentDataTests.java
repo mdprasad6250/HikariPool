@@ -34,7 +34,7 @@ public class StudentDataTests {
     public void SaveStudentTest() {
         Student student1 = new Student();
         student1.setStudentName("suma");
-        student1.setStudentMarks(88);
+        student1.setRank("88");
         student1.setStudentId(5);
 
       when(stdRepo.save(any())).thenReturn(student1);
@@ -48,19 +48,19 @@ public class StudentDataTests {
        Student student=new Student();
        student.setStudentId(6);
        student.setStudentName("Nikki");
-       student.setStudentMarks(68);
+       student.setRank("68");
 
        Student student1=new Student();
        student1.setStudentId(5);
        student1.setStudentName("Akki");
-       student1.setStudentMarks(98);
+       student1.setRank("98");
 
        List<Student> liststudents=new ArrayList<>();
       liststudents.add(student);
        liststudents.add(student1);
        when(stdRepo.findAll()).thenReturn(liststudents);
        List<Student> students= studentserviceimpl.getStudent();
-       assertNotEquals(student.getStudentMarks(), student1.getStudentMarks());
+       assertNotEquals(student.getRank(), student1.getRank());
 
     }
     @Test
@@ -68,11 +68,11 @@ public class StudentDataTests {
         Student student=new Student();
         student.setStudentId(1);
         student.setStudentName("NikhilKumar");
-        student.setStudentMarks(97);
+        student.setRank("97");
         Student student1=new Student();
         student1.setStudentId(5);
         student1.setStudentName("Akki");
-        student1.setStudentMarks(98);
+        student1.setRank("98");
 
         List<Student> liststudents=new ArrayList<>();
         liststudents.add(student);
@@ -86,7 +86,7 @@ public class StudentDataTests {
        Student students=new Student();
        students.setStudentId(9);
        students.setStudentName("Anu");
-       students.setStudentMarks(68);
+       students.setRank("68");
         when(stdRepo.findById(anyInt())).thenReturn(Optional.of(students));
         Optional<Student> student2=studentserviceimpl.updateStudent( 9,students);
         assertThat(student2).isNotEqualTo(students);
@@ -97,7 +97,7 @@ public class StudentDataTests {
         Student students=new Student();
         students.setStudentId(9);
         students.setStudentName("Nikhil");
-        students.setStudentMarks(98);
+        students.setRank("98");
         when(stdRepo.findById(students.getStudentId())).thenReturn(Optional.of(students));
         studentserviceimpl.deleteStudent(students.getStudentId());
         Optional optional = stdRepo.findById(students.getStudentId());

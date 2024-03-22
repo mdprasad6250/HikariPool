@@ -27,7 +27,7 @@ public class ControllerTests {
         Student students=new Student();
         students.setStudentId(3);
         students.setStudentName("AKki");
-        students.setStudentMarks(56);
+        students.setRank("56");
         StudentDto studentDto=new StudentDto();
         studentDto.setStudentId(2);
         studentDto.setStudentName("Nikki");
