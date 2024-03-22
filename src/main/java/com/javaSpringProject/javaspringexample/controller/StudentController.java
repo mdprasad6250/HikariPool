@@ -1,7 +1,7 @@
 package com.javaSpringProject.javaspringexample.controller;
 
 import com.javaSpringProject.javaspringexample.Entity.Student;
-import com.javaSpringProject.javaspringexample.services.StudentService;
+import com.javaSpringProject.javaspringexample.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,35 +22,35 @@ import java.util.Optional;
 public class StudentController {
     
     @Autowired
-    StudentService studentservice;
+    StudentServiceImpl studentService;
 
-    @PostMapping("/SaveStudents")
+    @PostMapping("/save-student")
     public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
 
-          Student saveStudent = studentservice.saveStudent(student);
+          Student saveStudent = studentService.saveStudent(student);
           return new ResponseEntity<>(saveStudent,HttpStatus.CREATED);
         }
 
     @GetMapping("/get-student")
     public List<Student> getStudents(Student student) {
 
-        return studentservice.getStudent();
+        return studentService.getStudent();
     }
 
     @GetMapping("/get-student/{stdId}")
     public Optional<Student> getStudentById(@PathVariable int stdId) {
-       return studentservice.getStudentById(stdId);
+       return studentService.getStudentById(stdId);
     }
 
     @PatchMapping("/update-student/{stdId}")
     public Optional<Student> updateStudent(@PathVariable int stdId, @RequestBody Student studentName) {
-        return studentservice.updateStudent(stdId,studentName);
+        return studentService.updateStudent(stdId,studentName);
     }
 
 
     @DeleteMapping("/delete-student/{stdId}")
     public ResponseEntity<Void> deleteStudent(@PathVariable int stdId) {
-        return studentservice.deleteStudent(stdId);
+        return studentService.deleteStudent(stdId);
     }
 
 }

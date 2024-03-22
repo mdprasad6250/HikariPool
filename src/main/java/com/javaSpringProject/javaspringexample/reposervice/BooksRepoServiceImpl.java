@@ -34,13 +34,15 @@ public class BooksRepoServiceImpl {
         return BookDto.builder().build();
     }
 
-    public Optional<Book> updateBook(BookDto bookDto) {
-        Optional<Book> book = bookRepo.findById(bookDto.getBookId());
+    public Optional<BookDto> updateBook(BookDto bookDto) {
+        Book book1 = MapperUtils.convertBookDtoToBookEntity(bookDto);
+        Optional<Book> book = bookRepo.findById(book1.getBookId());
         if (book.isPresent()) {
             book.get().setBookName(bookDto.getBookName());
-            return Optional.of(bookRepo.save(book.get()));
+
+            return Optional.of(MapperUtils.convertBookEntityToBookDto(bookRepo.save(book.get())));
         }else{
-            return book;
+            return Optional.empty();
         }
     }
 
