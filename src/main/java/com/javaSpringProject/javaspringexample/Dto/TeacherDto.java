@@ -15,7 +15,4 @@ public class TeacherDto {
     private Integer teacherId;
     private String teacherName;
     private String subject;
-
-
-
 }

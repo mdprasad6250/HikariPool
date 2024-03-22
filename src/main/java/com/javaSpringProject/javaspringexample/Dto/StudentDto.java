@@ -14,7 +14,4 @@ public class StudentDto {
     private Integer studentId;
     private String studentName;
     private Integer studentMarks;
-
-
-
 }
