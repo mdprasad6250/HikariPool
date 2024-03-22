@@ -1,7 +1,7 @@
 package com.javaSpringProject.javaspringexample;
 
 import com.javaSpringProject.javaspringexample.Entity.Student;
-import com.javaSpringProject.javaspringexample.repository.StdRepo;
+import com.javaSpringProject.javaspringexample.repository.StudentRepo;
 import com.javaSpringProject.javaspringexample.service.StudentServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +25,7 @@ public class StudentDataTests {
     @InjectMocks
     StudentServiceImpl studentserviceimpl;
     @Mock
-    StdRepo stdRepo;
+    StudentRepo studentRepo;
 
     @Test
     public void SaveStudentTest() {
@@ -34,7 +34,7 @@ public class StudentDataTests {
         student1.setRank("88");
         student1.setStudentId(5);
 
-      when(stdRepo.save(any())).thenReturn(student1);
+      when(studentRepo.save(any())).thenReturn(student1);
       Student student = studentserviceimpl.saveStudent(student1);
         assertThat(student.getStudentId()).isGreaterThan(3);
 
@@ -55,7 +55,7 @@ public class StudentDataTests {
        List<Student> liststudents=new ArrayList<>();
       liststudents.add(student);
        liststudents.add(student1);
-       when(stdRepo.findAll()).thenReturn(liststudents);
+       when(studentRepo.findAll()).thenReturn(liststudents);
        List<Student> students= studentserviceimpl.getStudent();
        assertNotEquals(student.getRank(), student1.getRank());
 
@@ -74,7 +74,7 @@ public class StudentDataTests {
         List<Student> liststudents=new ArrayList<>();
         liststudents.add(student);
         liststudents.add(student1);
-        when(stdRepo.findById(anyInt())).thenReturn(Optional.of(student));
+        when(studentRepo.findById(anyInt())).thenReturn(Optional.of(student));
        Optional<Student> students=studentserviceimpl.getStudentById(2);
         assertNotEquals(student.getStudentId(),student1.getStudentId());
     }
@@ -84,7 +84,7 @@ public class StudentDataTests {
        students.setStudentId(9);
        students.setStudentName("Anu");
        students.setRank("68");
-        when(stdRepo.findById(anyInt())).thenReturn(Optional.of(students));
+        when(studentRepo.findById(anyInt())).thenReturn(Optional.of(students));
         Optional<Student> student2=studentserviceimpl.updateStudent( 9,students);
         assertThat(student2).isNotEqualTo(students);
 
@@ -95,9 +95,9 @@ public class StudentDataTests {
         students.setStudentId(9);
         students.setStudentName("Nikhil");
         students.setRank("98");
-        when(stdRepo.findById(students.getStudentId())).thenReturn(Optional.of(students));
+        when(studentRepo.findById(students.getStudentId())).thenReturn(Optional.of(students));
         studentserviceimpl.deleteStudent(students.getStudentId());
-        Optional optional = stdRepo.findById(students.getStudentId());
+        Optional optional = studentRepo.findById(students.getStudentId());
         assertNotEquals(Optional.empty(),optional);
     }
 

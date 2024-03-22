@@ -2,7 +2,7 @@ package com.javaSpringProject.javaspringexample.reposervice;
 
 import com.javaSpringProject.javaspringexample.Dto.StudentDto;
 import com.javaSpringProject.javaspringexample.Entity.Student;
-import com.javaSpringProject.javaspringexample.repository.StdRepo;
+import com.javaSpringProject.javaspringexample.repository.StudentRepo;
 import com.javaSpringProject.javaspringexample.util.MapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class StudentRepoServiceImpl {
     @Autowired
-    StdRepo studentRepo;
+    StudentRepo studentRepo;
 
     public StudentDto saveStudent(StudentDto studentDto) {
         Student student = MapperUtils.convertStudentDtoToStudentEntity(studentDto);
@@ -29,8 +29,8 @@ public class StudentRepoServiceImpl {
 
     public StudentDto getStudentById(int studentId) {
         Optional<Student> student = studentRepo.findById(studentId);
-        if(student.isPresent())
-                return MapperUtils.convertStudentEntityToStudentDto(student.get());
+        if (student.isPresent())
+            return MapperUtils.convertStudentEntityToStudentDto(student.get());
         return StudentDto.builder().build();
     }
 
@@ -40,7 +40,7 @@ public class StudentRepoServiceImpl {
         if (student.isPresent()) {
             student.get().setStudentName(studentDto.getStudentName());
             return Optional.of(MapperUtils.convertStudentEntityToStudentDto(studentRepo.save(student.get())));
-        }else{
+        } else {
             return Optional.empty();
         }
     }

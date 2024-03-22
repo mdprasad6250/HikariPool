@@ -1,11 +1,11 @@
 package com.javaSpringProject.javaspringexample.util;
 
 import com.javaSpringProject.javaspringexample.Dto.BookDto;
-import com.javaSpringProject.javaspringexample.Dto.EventsDto;
-import com.javaSpringProject.javaspringexample.Dto.ExamsDto;
+import com.javaSpringProject.javaspringexample.Dto.EventDto;
+import com.javaSpringProject.javaspringexample.Dto.ExamDto;
 import com.javaSpringProject.javaspringexample.Dto.ManagementDto;
-import com.javaSpringProject.javaspringexample.Dto.ParentsDto;
-import com.javaSpringProject.javaspringexample.Dto.SportsDto;
+import com.javaSpringProject.javaspringexample.Dto.ParentDto;
+import com.javaSpringProject.javaspringexample.Dto.SportDto;
 import com.javaSpringProject.javaspringexample.Dto.StudentDto;
 import com.javaSpringProject.javaspringexample.Dto.TeacherDto;
 import com.javaSpringProject.javaspringexample.Entity.Book;
@@ -25,7 +25,6 @@ import org.modelmapper.convention.MatchingStrategies;
 
 import java.util.Collection;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -87,7 +86,7 @@ public class MapperUtils {
         EVENT_TO_EVENT_DTO_MODEL_MAPPER
                 .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT);
-        PropertyMap<Events, EventsDto> eventDtoPropertyMap = new PropertyMap<>() {
+        PropertyMap<Events, EventDto> eventDtoPropertyMap = new PropertyMap<>() {
             @Override
             protected void configure() {
                 map().setEventId(source.getEventId());
@@ -99,7 +98,7 @@ public class MapperUtils {
         EVENT_DTO_TO_EVENT_MODEL_MAPPER
                 .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT);
-        PropertyMap<EventsDto, Events> eventsPropertyMap = new PropertyMap<>() {
+        PropertyMap<EventDto, Events> eventsPropertyMap = new PropertyMap<>() {
             @Override
             protected void configure() {
                 map().setEventId(source.getEventId());
@@ -113,7 +112,7 @@ public class MapperUtils {
         EXAMS_TO_EXAMS_DTO_MODEL_MAPPER
                 .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT);
-        PropertyMap<Exams, ExamsDto> examDtoPropertyMap = new PropertyMap<>() {
+        PropertyMap<Exams, ExamDto> examDtoPropertyMap = new PropertyMap<>() {
             @Override
             protected void configure() {
                 map().setExamId(source.getExamId());
@@ -125,7 +124,7 @@ public class MapperUtils {
         EXAMS_DTO_TO_EXAMS_MODEL_MAPPER
                 .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT);
-        PropertyMap<Exams, ExamsDto> examsPropertyMap = new PropertyMap<>() {
+        PropertyMap<Exams, ExamDto> examsPropertyMap = new PropertyMap<>() {
             @Override
             protected void configure() {
                 map().setExamId(source.getExamId());
@@ -165,7 +164,7 @@ public class MapperUtils {
         PARENT_TO_PARENT_DTO_MODEL_MAPPER
                 .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT);
-        PropertyMap<Parents, ParentsDto> parentsDtoPropertyMap = new PropertyMap<>() {
+        PropertyMap<Parents, ParentDto> parentsDtoPropertyMap = new PropertyMap<>() {
             @Override
             protected void configure() {
                 map().setParentId(source.getParentId());
@@ -177,7 +176,7 @@ public class MapperUtils {
         PARENT_DTO_TO_PARENT_MODEL_MAPPER
                 .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT);
-        PropertyMap<Parents, ParentsDto> parentsPropertyMap = new PropertyMap<>() {
+        PropertyMap<Parents, ParentDto> parentsPropertyMap = new PropertyMap<>() {
             @Override
             protected void configure() {
                 map().setParentId(source.getParentId());
@@ -191,7 +190,7 @@ public class MapperUtils {
         SPORTS_TO_SPORTS_DTO_MODEL_MAPPER
                 .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT);
-        PropertyMap<Sports, SportsDto> sportDtoPropertyMap = new PropertyMap<>() {
+        PropertyMap<Sports, SportDto> sportDtoPropertyMap = new PropertyMap<>() {
             @Override
             protected void configure() {
                 map().setSportId(source.getSportId());
@@ -203,7 +202,7 @@ public class MapperUtils {
         SPORTS_DTO_TO_SPORTS_MODEL_MAPPER
                 .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT);
-        PropertyMap<Sports, SportsDto> sportsPropertyMap = new PropertyMap<>() {
+        PropertyMap<Sports, SportDto> sportsPropertyMap = new PropertyMap<>() {
             @Override
             protected void configure() {
                 map().setSportId(source.getSportId());
@@ -297,50 +296,50 @@ public class MapperUtils {
         }).collect(Collectors.toList());
     }
 
-    public static EventsDto convertEventsEntityToEventsDto(Events eventEntity) {
+    public static EventDto convertEventsEntityToEventsDto(Events eventEntity) {
         if (Objects.isNull(eventEntity)) {
-            return EventsDto.builder().build();
+            return EventDto.builder().build();
         }
-        return UtilsMapper.map(EVENT_TO_EVENT_DTO_MODEL_MAPPER, eventEntity, EventsDto.class);
+        return UtilsMapper.map(EVENT_TO_EVENT_DTO_MODEL_MAPPER, eventEntity, EventDto.class);
     }
 
-    public static Collection<EventsDto> convertEventEntityToEventDto(Collection<Events> eventEntities) {
+    public static Collection<EventDto> convertEventEntityToEventDto(Collection<Events> eventEntities) {
         if (CollectionUtils.isEmpty(eventEntities)) {
             return CollectionUtils.emptyCollection();
         }
         return eventEntities.stream().filter(Objects::nonNull).map(events -> {
-            return UtilsMapper.map(EVENT_DTO_TO_EVENT_MODEL_MAPPER, events, EventsDto.class);
+            return UtilsMapper.map(EVENT_DTO_TO_EVENT_MODEL_MAPPER, events, EventDto.class);
         }).collect(Collectors.toList());
     }
 
-    public static Events convertEventDtoToEventEntity(EventsDto eventsDto) {
-        if (Objects.isNull(eventsDto)) {
+    public static Events convertEventDtoToEventEntity(EventDto eventDto) {
+        if (Objects.isNull(eventDto)) {
             throw new IllegalArgumentException();
         }
-        return UtilsMapper.map(EVENT_DTO_TO_EVENT_MODEL_MAPPER, eventsDto, Events.class);
+        return UtilsMapper.map(EVENT_DTO_TO_EVENT_MODEL_MAPPER, eventDto, Events.class);
     }
 
-    public static ExamsDto convertExamsEntityToExamsDto(Exams examsEntity) {
+    public static ExamDto convertExamsEntityToExamsDto(Exams examsEntity) {
         if (Objects.isNull(examsEntity)) {
-            return ExamsDto.builder().build();
+            return ExamDto.builder().build();
         }
-        return UtilsMapper.map(EXAMS_TO_EXAMS_DTO_MODEL_MAPPER, examsEntity, ExamsDto.class);
+        return UtilsMapper.map(EXAMS_TO_EXAMS_DTO_MODEL_MAPPER, examsEntity, ExamDto.class);
     }
 
-    public static Collection<ExamsDto> convertExamsEntityToExamsDto(Collection<Exams> examEntities) {
+    public static Collection<ExamDto> convertExamsEntityToExamsDto(Collection<Exams> examEntities) {
         if (CollectionUtils.isEmpty(examEntities)) {
             return CollectionUtils.emptyCollection();
         }
         return examEntities.stream().filter(Objects::nonNull).map(exams -> {
-            return UtilsMapper.map(EXAMS_DTO_TO_EXAMS_MODEL_MAPPER, exams, ExamsDto.class);
+            return UtilsMapper.map(EXAMS_DTO_TO_EXAMS_MODEL_MAPPER, exams, ExamDto.class);
         }).collect(Collectors.toList());
     }
 
-    public static Exams convertExamDtoToExamEntity(ExamsDto examsDto) {
-        if (Objects.isNull(examsDto)) {
+    public static Exams convertExamDtoToExamEntity(ExamDto examDto) {
+        if (Objects.isNull(examDto)) {
             throw new IllegalArgumentException();
         }
-        return UtilsMapper.map(EXAMS_DTO_TO_EXAMS_MODEL_MAPPER, examsDto, Exams.class);
+        return UtilsMapper.map(EXAMS_DTO_TO_EXAMS_MODEL_MAPPER, examDto, Exams.class);
     }
 
     public static ManagementDto convertManagementEntityToManagementDto(Management managementEntity) {
@@ -367,51 +366,51 @@ public class MapperUtils {
     }
 
 
-    public static ParentsDto convertParentEntityToParentDto(Parents parentsEntity) {
+    public static ParentDto convertParentEntityToParentDto(Parents parentsEntity) {
         if (Objects.isNull(parentsEntity)) {
-            return ParentsDto.builder().build();
+            return ParentDto.builder().build();
         }
-        return UtilsMapper.map(PARENT_TO_PARENT_DTO_MODEL_MAPPER, parentsEntity, ParentsDto.class);
+        return UtilsMapper.map(PARENT_TO_PARENT_DTO_MODEL_MAPPER, parentsEntity, ParentDto.class);
     }
 
-    public static Collection<ParentsDto> convertParentEntityToParentDto(Collection<Parents> parentEntities) {
+    public static Collection<ParentDto> convertParentEntityToParentDto(Collection<Parents> parentEntities) {
         if (CollectionUtils.isEmpty(parentEntities)) {
             return CollectionUtils.emptyCollection();
         }
         return parentEntities.stream().filter(Objects::nonNull).map(parents -> {
-            return UtilsMapper.map(PARENT_DTO_TO_PARENT_MODEL_MAPPER, parents, ParentsDto.class);
+            return UtilsMapper.map(PARENT_DTO_TO_PARENT_MODEL_MAPPER, parents, ParentDto.class);
         }).collect(Collectors.toList());
     }
 
-    public static Parents convertParentDtoToParentEntity(ParentsDto parentsDto) {
-        if (Objects.isNull(parentsDto)) {
+    public static Parents convertParentDtoToParentEntity(ParentDto parentDto) {
+        if (Objects.isNull(parentDto)) {
             throw new IllegalArgumentException();
         }
-        return UtilsMapper.map(PARENT_DTO_TO_PARENT_MODEL_MAPPER, parentsDto, Parents.class);
+        return UtilsMapper.map(PARENT_DTO_TO_PARENT_MODEL_MAPPER, parentDto, Parents.class);
     }
 
 
-    public static SportsDto convertSportsEntityToSportsDto(Sports sportsEntity) {
+    public static SportDto convertSportsEntityToSportsDto(Sports sportsEntity) {
         if (Objects.isNull(sportsEntity)) {
-            return SportsDto.builder().build();
+            return SportDto.builder().build();
         }
-        return UtilsMapper.map(SPORTS_TO_SPORTS_DTO_MODEL_MAPPER, sportsEntity, SportsDto.class);
+        return UtilsMapper.map(SPORTS_TO_SPORTS_DTO_MODEL_MAPPER, sportsEntity, SportDto.class);
     }
 
-    public static Collection<SportsDto> convertSportsEntityToSportsDto(Collection<Sports> sportsEntities) {
+    public static Collection<SportDto> convertSportsEntityToSportsDto(Collection<Sports> sportsEntities) {
         if (CollectionUtils.isEmpty(sportsEntities)) {
             return CollectionUtils.emptyCollection();
         }
         return sportsEntities.stream().filter(Objects::nonNull).map(sports -> {
-            return UtilsMapper.map(SPORTS_DTO_TO_SPORTS_MODEL_MAPPER, sports, SportsDto.class);
+            return UtilsMapper.map(SPORTS_DTO_TO_SPORTS_MODEL_MAPPER, sports, SportDto.class);
         }).collect(Collectors.toList());
     }
 
-    public static Sports convertSportsDtoToSportsEntity(SportsDto sportsDto) {
-        if (Objects.isNull(sportsDto)) {
+    public static Sports convertSportsDtoToSportsEntity(SportDto sportDto) {
+        if (Objects.isNull(sportDto)) {
             throw new IllegalArgumentException();
         }
-        return UtilsMapper.map(SPORTS_DTO_TO_SPORTS_MODEL_MAPPER, sportsDto, Sports.class);
+        return UtilsMapper.map(SPORTS_DTO_TO_SPORTS_MODEL_MAPPER, sportDto, Sports.class);
     }
 
     public static StudentDto convertStudentEntityToStudentDto(Student studentEntity) {

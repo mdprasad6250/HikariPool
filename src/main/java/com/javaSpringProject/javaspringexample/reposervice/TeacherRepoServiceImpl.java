@@ -29,8 +29,8 @@ public class TeacherRepoServiceImpl {
 
     public TeacherDto getTeacherById(int teacherId) {
         Optional<Teacher> teacher = teacherRepo.findById(teacherId);
-        if(teacher.isPresent())
-                return MapperUtils.convertTeacherEntityToTeacherDto(teacher.get());
+        if (teacher.isPresent())
+            return MapperUtils.convertTeacherEntityToTeacherDto(teacher.get());
         return TeacherDto.builder().build();
     }
 
@@ -40,7 +40,7 @@ public class TeacherRepoServiceImpl {
         if (teacher.isPresent()) {
             teacher.get().setTeacherName(teacherDto.getTeacherName());
             return Optional.of(MapperUtils.convertTeacherEntityToTeacherDto(teacherRepo.save(teacher.get())));
-        }else{
+        } else {
             return Optional.empty();
         }
     }

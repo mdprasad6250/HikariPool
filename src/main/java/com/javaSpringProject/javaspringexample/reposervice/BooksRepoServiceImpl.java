@@ -2,7 +2,7 @@ package com.javaSpringProject.javaspringexample.reposervice;
 
 import com.javaSpringProject.javaspringexample.Dto.BookDto;
 import com.javaSpringProject.javaspringexample.Entity.Book;
-import com.javaSpringProject.javaspringexample.repository.BooksRepo;
+import com.javaSpringProject.javaspringexample.repository.BookRepo;
 import com.javaSpringProject.javaspringexample.util.MapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,13 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class BooksRepoServiceImpl {
     @Autowired
-    BooksRepo bookRepo;
+    BookRepo bookRepo;
 
     public BookDto saveBook(BookDto bookDto) {
         Book book = MapperUtils.convertBookDtoToBookEntity(bookDto);
@@ -39,7 +38,6 @@ public class BooksRepoServiceImpl {
         Optional<Book> book = bookRepo.findById(book1.getBookId());
         if (book.isPresent()) {
             book.get().setBookName(bookDto.getBookName());
-
             return Optional.of(MapperUtils.convertBookEntityToBookDto(bookRepo.save(book.get())));
         }else{
             return Optional.empty();

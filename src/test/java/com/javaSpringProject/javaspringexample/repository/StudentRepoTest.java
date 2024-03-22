@@ -11,7 +11,7 @@ import static org.mockito.ArgumentMatchers.any;
 public class StudentRepoTest {
     Student students=new Student();
     @Autowired
-     StdRepo stdRepo;
+    StudentRepo studentRepo;
      @Test
     public void saveStudentTest(){
          Student student = new Student();

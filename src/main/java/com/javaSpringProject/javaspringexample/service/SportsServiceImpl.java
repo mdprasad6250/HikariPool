@@ -1,7 +1,7 @@
 package com.javaSpringProject.javaspringexample.service;
 
 import com.javaSpringProject.javaspringexample.Entity.Sports;
-import com.javaSpringProject.javaspringexample.repository.SportsRepo;
+import com.javaSpringProject.javaspringexample.repository.SportRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,36 +13,36 @@ import java.util.Optional;
 @Service
 public class SportsServiceImpl {
     @Autowired
-    SportsRepo sportsRepo;
+    SportRepo sportRepo;
 
     public Sports saveSport(Sports sports) {
 
-        return sportsRepo.save(sports);
+        return sportRepo.save(sports);
     }
 
     public List<Sports> getSport() {
-        return sportsRepo.findAll();
+        return sportRepo.findAll();
     }
 
     public Optional<Sports> getSportById(int sportId) {
 
-        return sportsRepo.findById(sportId);
+        return sportRepo.findById(sportId);
     }
 
     public Optional<Sports> updateSport(int sportId, Sports sportName) {
-        Optional<Sports> sports = sportsRepo.findById(sportId);
+        Optional<Sports> sports = sportRepo.findById(sportId);
         if (sports.isPresent()) {
             sports.get().setSportName(sportName.getSportName());
-            return Optional.of(sportsRepo.save(sports.get()));
+            return Optional.of(sportRepo.save(sports.get()));
         }else{
             return sports;
         }
     }
 
     public ResponseEntity<Void> deleteSports(int sportId) {
-        Optional<Sports> sports = sportsRepo.findById(sportId);
+        Optional<Sports> sports = sportRepo.findById(sportId);
         if (sports.isPresent()) {
-            sportsRepo.deleteById(sportId);
+            sportRepo.deleteById(sportId);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

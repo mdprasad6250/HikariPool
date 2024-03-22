@@ -24,12 +24,11 @@ public class ManagementController {
     @Autowired
     ManagementServiceImpl managementService;
 
-
     @PostMapping("/save-management")
     public ResponseEntity<Management> saveManagement(@RequestBody Management management) {
-          Management saveManagement = managementService.saveManagement(management);
-          return new ResponseEntity<>(saveManagement,HttpStatus.CREATED);
-        }
+        Management saveManagement = managementService.saveManagement(management);
+        return new ResponseEntity<>(saveManagement, HttpStatus.CREATED);
+    }
 
     @GetMapping("/get-management-details")
     public List<Management> getManagement(Management management) {
@@ -38,28 +37,16 @@ public class ManagementController {
 
     @GetMapping("/get-management/{managementId}")
     public Optional<Management> getManagementById(@PathVariable int managementId) {
-       return managementService.getManagementById(managementId);
+        return managementService.getManagementById(managementId);
     }
 
     @PatchMapping("/update-management/{managementId}")
     public Optional<Management> updateManagement(@PathVariable int managementId, @RequestBody Management management) {
-        return managementService.updateManagement(managementId,management);
+        return managementService.updateManagement(managementId, management);
     }
-
 
     @DeleteMapping("/delete-management/{managementId}")
     public ResponseEntity<Void> deleteManagement(@PathVariable int managementId) {
         return managementService.deleteManagement(managementId);
     }
-
 }
-
-
-
-
-
-
-
-
-
-

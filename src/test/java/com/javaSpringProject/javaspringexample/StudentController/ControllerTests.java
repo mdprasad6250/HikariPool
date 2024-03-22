@@ -21,19 +21,20 @@ public class ControllerTests {
     StudentServiceImpl studentService;
     @InjectMocks
     StudentController studentcontroller;
+
     @Test
     @Ignore
     public void saveTest() {
-        Student students=new Student();
+        Student students = new Student();
         students.setStudentId(3);
         students.setStudentName("AKki");
         students.setRank("56");
-        StudentDto studentDto=new StudentDto();
+        StudentDto studentDto = new StudentDto();
         studentDto.setStudentId(2);
         studentDto.setStudentName("Nikki");
         studentDto.setStudentMarks(65);
         Mockito.when(studentService.saveStudent(Mockito.any())).thenReturn((studentService.saveStudent(students)));
         Assertions.assertNotNull(studentcontroller.saveStudent(students));
     }
-    }
+}
 

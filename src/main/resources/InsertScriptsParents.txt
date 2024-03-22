@@ -9997,5 +9997,4 @@ INSERT INTO BES.Parents VALUES(9996,'ParentsName-9996','ParentsDescription-9996'
 INSERT INTO BES.Parents VALUES(9997,'ParentsName-9997','ParentsDescription-9997');
 INSERT INTO BES.Parents VALUES(9998,'ParentsName-9998','ParentsDescription-9998');
 INSERT INTO BES.Parents VALUES(9999,'ParentsName-9999','ParentsDescription-9999');
-INSERT INTO BES.Parents VALUES(10000,'EventName-9999','EventDescription-9999');
 commit;

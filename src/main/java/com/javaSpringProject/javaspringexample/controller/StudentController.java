@@ -20,47 +20,33 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class StudentController {
-    
+
     @Autowired
     StudentServiceImpl studentService;
 
     @PostMapping("/save-student")
     public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
-
-          Student saveStudent = studentService.saveStudent(student);
-          return new ResponseEntity<>(saveStudent,HttpStatus.CREATED);
-        }
+        Student saveStudent = studentService.saveStudent(student);
+        return new ResponseEntity<>(saveStudent, HttpStatus.CREATED);
+    }
 
     @GetMapping("/get-student")
     public List<Student> getStudents(Student student) {
-
         return studentService.getStudent();
     }
 
     @GetMapping("/get-student/{stdId}")
     public Optional<Student> getStudentById(@PathVariable int stdId) {
-       return studentService.getStudentById(stdId);
+        return studentService.getStudentById(stdId);
     }
 
     @PatchMapping("/update-student/{stdId}")
     public Optional<Student> updateStudent(@PathVariable int stdId, @RequestBody Student studentName) {
-        return studentService.updateStudent(stdId,studentName);
+        return studentService.updateStudent(stdId, studentName);
     }
-
 
     @DeleteMapping("/delete-student/{stdId}")
     public ResponseEntity<Void> deleteStudent(@PathVariable int stdId) {
         return studentService.deleteStudent(stdId);
     }
-
 }
-
-
-
-
-
-
-
-
-
-

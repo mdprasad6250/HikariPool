@@ -1,22 +1,27 @@
 package com.javaSpringProject.javaspringexample.service;
 
-import com.javaSpringProject.javaspringexample.repository.BooksRepo;
+import com.javaSpringProject.javaspringexample.repository.BookRepo;
 import com.javaSpringProject.javaspringexample.Entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class BooksServiceImpl {
     @Autowired
-    BooksRepo bookRepo;
+    BookRepo bookRepo;
 
     public Book saveBook(Book book) {
         return bookRepo.save(book);
+    }
+
+    public Collection<Book> saveBooks(Collection<Book> books) {
+        return bookRepo.saveAll(books);
     }
 
     public List<Book> getBook() {
@@ -27,8 +32,8 @@ public class BooksServiceImpl {
        return bookRepo.findById(bookId);
     }
 
-    public Optional<Book> updateBook(int bookId, Book bookName) {
-        Optional<Book> books = bookRepo.findById(bookId);
+    public Optional<Book> updateBook(Book bookName) {
+        Optional<Book> books = bookRepo.findById(bookName.getBookId());
         if (books.isPresent()) {
             books.get().setBookName(bookName.getBookName());
             return Optional.of(bookRepo.save(books.get()));

@@ -6,17 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
 @Builder
-public class ParentsDto {
-	private Integer parentId;
+public class ExamDto {
+	private Integer examId;
 
-    private String parentName;
+    private String examName;
 
-    private String parentFeedback;
+    private String examResults;
 }

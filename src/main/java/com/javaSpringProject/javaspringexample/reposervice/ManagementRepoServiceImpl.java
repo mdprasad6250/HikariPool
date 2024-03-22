@@ -28,8 +28,8 @@ public class ManagementRepoServiceImpl {
 
     public ManagementDto getManagementById(int managementId) {
         Optional<Management> management = managementRepo.findById(managementId);
-        if(management.isPresent())
-                return MapperUtils.convertManagementEntityToManagementDto(management.get());
+        if (management.isPresent())
+            return MapperUtils.convertManagementEntityToManagementDto(management.get());
         return ManagementDto.builder().build();
     }
 
@@ -39,7 +39,7 @@ public class ManagementRepoServiceImpl {
         if (management.isPresent()) {
             management.get().setManagementName(managementDto.getManagementName());
             return Optional.of(MapperUtils.convertManagementEntityToManagementDto(managementRepo.save(management.get())));
-        }else{
+        } else {
             return Optional.empty();
         }
     }

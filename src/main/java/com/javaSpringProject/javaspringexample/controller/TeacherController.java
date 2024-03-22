@@ -24,12 +24,11 @@ public class TeacherController {
     @Autowired
     TeacherServiceImpl teacherService;
 
-
     @PostMapping("/save-teacher")
     public ResponseEntity<Teacher> saveTeacher(@RequestBody Teacher teacher) {
-          Teacher saveTeachers = teacherService.saveTeacher(teacher);
-          return new ResponseEntity<>(saveTeachers,HttpStatus.CREATED);
-        }
+        Teacher saveTeachers = teacherService.saveTeacher(teacher);
+        return new ResponseEntity<>(saveTeachers, HttpStatus.CREATED);
+    }
 
     @GetMapping("/get-teacher")
     public List<Teacher> getTeachers(Teacher teacher) {
@@ -38,28 +37,16 @@ public class TeacherController {
 
     @GetMapping("/get-teacher/{teacherId}")
     public Optional<Teacher> getBookById(@PathVariable int teacherId) {
-       return teacherService.getTeacherById(teacherId);
+        return teacherService.getTeacherById(teacherId);
     }
 
     @PatchMapping("/update-teacher/{teacherId}")
     public Optional<Teacher> updateTeacher(@PathVariable int teacherId, @RequestBody Teacher teacherName) {
-        return teacherService.updateTeacher(teacherId,teacherName);
+        return teacherService.updateTeacher(teacherId, teacherName);
     }
-
 
     @DeleteMapping("/delete-teacher/{teacherId}")
     public ResponseEntity<Void> deleteStudent(@PathVariable int teacherId) {
         return teacherService.deleteTeacher(teacherId);
     }
-
 }
-
-
-
-
-
-
-
-
-
-

@@ -9997,5 +9997,4 @@ INSERT INTO BES.Sports VALUES(9996,'SportsName-9996','SportsDescription-9996');
 INSERT INTO BES.Sports VALUES(9997,'SportsName-9997','SportsDescription-9997');
 INSERT INTO BES.Sports VALUES(9998,'SportsName-9998','SportsDescription-9998');
 INSERT INTO BES.Sports VALUES(9999,'SportsName-9999','SportsDescription-9999');
-INSERT INTO BES.Sports VALUES(10000,'EventName-9999','EventDescription-9999');
 commit;
