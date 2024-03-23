@@ -22,8 +22,7 @@ public class TeacherRepoServiceImpl {
         return MapperUtils.convertTeacherEntityToTeacherDto(teacherRepo.save(teacher));
     }
 
-    public Collection<TeacherDto> getTeacher() {
-
+    public Collection<TeacherDto> getTeachers() {
         return MapperUtils.convertTeacherEntityToTeacherDto(teacherRepo.findAll());
     }
 

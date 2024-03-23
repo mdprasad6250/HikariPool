@@ -19,7 +19,7 @@ public class StudentServiceImpl  {
         return studentRepo.save(student);
     }
 
-    public List<Student> getStudent() {
+    public List<Student> getStudents() {
         List<Student> studentsList = studentRepo.findAll();
         System.out.println(studentsList.size());
         return studentsList;

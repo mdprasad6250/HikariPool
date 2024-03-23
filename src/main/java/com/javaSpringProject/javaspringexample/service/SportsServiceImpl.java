@@ -20,7 +20,7 @@ public class SportsServiceImpl {
         return sportRepo.save(sports);
     }
 
-    public List<Sports> getSport() {
+    public List<Sports> getSports() {
         return sportRepo.findAll();
     }
 

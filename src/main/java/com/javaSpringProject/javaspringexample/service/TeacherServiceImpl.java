@@ -20,7 +20,7 @@ public class TeacherServiceImpl {
         return teacherRepo.save(teacher);
     }
 
-    public List<Teacher> getTeacher() {
+    public List<Teacher> getTeachers() {
         return teacherRepo.findAll();
     }
 

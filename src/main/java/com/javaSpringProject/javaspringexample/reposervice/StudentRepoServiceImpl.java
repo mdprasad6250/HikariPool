@@ -22,8 +22,7 @@ public class StudentRepoServiceImpl {
         return MapperUtils.convertStudentEntityToStudentDto(studentRepo.save(student));
     }
 
-    public Collection<StudentDto> getStudent() {
-
+    public Collection<StudentDto> getStudents() {
         return MapperUtils.convertStudentEntityToStudentDto(studentRepo.findAll());
     }
 

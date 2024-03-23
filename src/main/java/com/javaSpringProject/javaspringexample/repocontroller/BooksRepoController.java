@@ -32,7 +32,7 @@ public class BooksRepoController {
 
     @GetMapping("/get-book")
     public Collection<BookDto> getBooks() {
-        return booksRepoService.getBook();
+        return booksRepoService.getBooks();
     }
 
     @GetMapping("/get-book/{bookId}")

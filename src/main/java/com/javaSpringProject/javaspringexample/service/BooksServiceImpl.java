@@ -24,7 +24,7 @@ public class BooksServiceImpl {
         return bookRepo.saveAll(books);
     }
 
-    public List<Book> getBook() {
+    public List<Book> getBooks() {
         return bookRepo.findAll();
     }
 

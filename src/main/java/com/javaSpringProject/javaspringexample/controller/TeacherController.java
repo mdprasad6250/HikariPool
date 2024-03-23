@@ -32,7 +32,7 @@ public class TeacherController {
 
     @GetMapping("/get-teacher")
     public List<Teacher> getTeachers(Teacher teacher) {
-        return teacherService.getTeacher();
+        return teacherService.getTeachers();
     }
 
     @GetMapping("/get-teacher/{teacherId}")

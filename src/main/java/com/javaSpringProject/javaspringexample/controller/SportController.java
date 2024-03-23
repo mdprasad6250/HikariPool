@@ -32,7 +32,7 @@ public class SportController {
 
     @GetMapping("/get-sport")
     public List<Sports> getSports(Sports sport) {
-        return sportsService.getSport();
+        return sportsService.getSports();
     }
 
     @GetMapping("/get-sport/{sportId}")

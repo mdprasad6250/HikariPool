@@ -32,7 +32,7 @@ public class StudentController {
 
     @GetMapping("/get-student")
     public List<Student> getStudents(Student student) {
-        return studentService.getStudent();
+        return studentService.getStudents();
     }
 
     @GetMapping("/get-student/{stdId}")

@@ -22,7 +22,7 @@ public class ParentsRepoServiceImpl {
         return MapperUtils.convertParentEntityToParentDto(parentRepo.save(parents));
     }
 
-    public Collection<ParentDto> getParent() {
+    public Collection<ParentDto> getParents() {
 
         return MapperUtils.convertParentEntityToParentDto(parentRepo.findAll());
     }

@@ -1,9 +1,7 @@
 package com.javaSpringProject.javaspringexample.repocontroller;
 
 import com.javaSpringProject.javaspringexample.Dto.StudentDto;
-import com.javaSpringProject.javaspringexample.Entity.Student;
 import com.javaSpringProject.javaspringexample.reposervice.StudentRepoServiceImpl;
-import com.javaSpringProject.javaspringexample.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -35,7 +32,7 @@ public class StudentRepoController {
 
     @GetMapping("/get-student")
     public Collection<StudentDto> getStudents() {
-        return studentService.getStudent();
+        return studentService.getStudents();
     }
 
     @GetMapping("/get-student/{stdId}")

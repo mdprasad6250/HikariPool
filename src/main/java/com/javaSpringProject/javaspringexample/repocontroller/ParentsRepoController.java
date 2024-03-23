@@ -32,7 +32,7 @@ public class ParentsRepoController {
 
     @GetMapping("/get-parent-details")
     public Collection<ParentDto> getParents() {
-        return parentService.getParent();
+        return parentService.getParents();
     }
 
     @GetMapping("/get-parent/{parentId}")

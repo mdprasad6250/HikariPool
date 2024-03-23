@@ -22,7 +22,7 @@ public class BooksRepoServiceImpl {
         return MapperUtils.convertBookEntityToBookDto(bookRepo.save(book));
     }
 
-    public Collection<BookDto> getBook() {
+    public Collection<BookDto> getBooks() {
         return MapperUtils.convertBookEntityToBookDto(bookRepo.findAll());
     }
 

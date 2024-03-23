@@ -56,7 +56,7 @@ public class StudentDataTests {
       liststudents.add(student);
        liststudents.add(student1);
        when(studentRepo.findAll()).thenReturn(liststudents);
-       List<Student> students= studentserviceimpl.getStudent();
+       List<Student> students= studentserviceimpl.getStudents();
        assertNotEquals(student.getRank(), student1.getRank());
 
     }
