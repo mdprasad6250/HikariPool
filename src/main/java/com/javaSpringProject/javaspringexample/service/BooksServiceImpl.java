@@ -1,14 +1,13 @@
 package com.javaSpringProject.javaspringexample.service;
 
-import com.javaSpringProject.javaspringexample.repository.BookRepo;
 import com.javaSpringProject.javaspringexample.Entity.Book;
+import com.javaSpringProject.javaspringexample.repository.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,7 +23,7 @@ public class BooksServiceImpl {
         return bookRepo.saveAll(books);
     }
 
-    public List<Book> getBooks() {
+    public Collection<Book> getBooks() {
         return bookRepo.findAll();
     }
 

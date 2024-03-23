@@ -4,6 +4,12 @@ import com.javaSpringProject.javaspringexample.Dto.BookDto;
 import com.javaSpringProject.javaspringexample.Dto.EventDto;
 import com.javaSpringProject.javaspringexample.Dto.ExamDto;
 import com.javaSpringProject.javaspringexample.Dto.ManagementDto;
+import com.javaSpringProject.javaspringexample.Dto.ParentDto;
+import com.javaSpringProject.javaspringexample.Dto.SportDto;
+import com.javaSpringProject.javaspringexample.Dto.StudentDto;
+import com.javaSpringProject.javaspringexample.Dto.TeacherDto;
+import com.javaSpringProject.javaspringexample.Entity.Events;
+import com.javaSpringProject.javaspringexample.Entity.Parents;
 import com.javaSpringProject.javaspringexample.reposervice.BooksRepoServiceImpl;
 import com.javaSpringProject.javaspringexample.reposervice.EventsRepoServiceImpl;
 import com.javaSpringProject.javaspringexample.reposervice.ExamsRepoServiceImpl;
@@ -40,57 +46,105 @@ public class ActionOneImpl {
 
 
     public void getAllDetails(){
-        booksRepoService.getBooks();
-        CsvWrite.writeDataLineByLine("ActionOne getBooks ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionOne getBooks Start");
+            Collection<BookDto> bookDtos = booksRepoService.getBooks();
+            CsvWrite.writeDataLineByLine("ActionOne getBooks Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionOne Exception Fetching_Books"+e.getMessage().replace(' ','_'));
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        eventsRepoService.getEvents();
-        CsvWrite.writeDataLineByLine("ActionOne getEvents ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionOne getEvents Start");
+            Collection<EventDto> eventDtos = eventsRepoService.getEvents();
+            CsvWrite.writeDataLineByLine("ActionOne getEvents Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionOne Exception Fetching_Events"+e.getMessage().replace(' ','_'));
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        examsRepoService.getExams();
-        CsvWrite.writeDataLineByLine("ActionOne getExams ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionOne getExams Start");
+            Collection<ExamDto> examDtos =examsRepoService.getExams();
+            CsvWrite.writeDataLineByLine("ActionOne getExams Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionOne Exception Fetching_Exams"+e.getMessage().replace(' ','_'));
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        managementRepoService.getManagement();
-        CsvWrite.writeDataLineByLine("ActionOne getManagement ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionOne getManagement Start");
+            Collection<ManagementDto> managementDtos =managementRepoService.getManagement();
+            CsvWrite.writeDataLineByLine("ActionOne getManagement Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionOne Exception Fetching_Management"+e.getMessage().replace(' ','_'));
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        parentsRepoService.getParents();
-        CsvWrite.writeDataLineByLine("ActionOne getParents ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionOne getParents Start");
+            Collection<ParentDto> parentDtos =parentsRepoService.getParents();
+            CsvWrite.writeDataLineByLine("ActionOne getParents Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionOne Exception Fetching_Parents"+e.getMessage().replace(' ','_'));
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        sportsRepoService.getSports();
-        CsvWrite.writeDataLineByLine("ActionOne getSports ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionOne getSports Start");
+            Collection<SportDto> sportDtos =sportsRepoService.getSports();
+            CsvWrite.writeDataLineByLine("ActionOne getSports Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionOne Exception Fetching_Sports"+e.getMessage().replace(' ','_'));
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        studentRepoService.getStudents();
-        CsvWrite.writeDataLineByLine("ActionOne getStudents ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionOne getStudents Start");
+            Collection<StudentDto> studentDtos =studentRepoService.getStudents();
+            CsvWrite.writeDataLineByLine("ActionOne getStudents Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionOne Exception Fetching_Students"+e.getMessage().replace(' ','_'));
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        teacherRepoService.getTeachers();
-        CsvWrite.writeDataLineByLine("ActionOne getTeacher ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionOne getTeacher Start");
+            Collection<TeacherDto> teacherDtos = teacherRepoService.getTeachers();
+            CsvWrite.writeDataLineByLine("ActionOne getTeacher Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionOne Exception Fetching_Teacher"+e.getMessage().replace(' ','_'));
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

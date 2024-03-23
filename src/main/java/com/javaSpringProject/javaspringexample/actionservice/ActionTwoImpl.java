@@ -46,57 +46,105 @@ public class ActionTwoImpl {
     private TeacherRepoServiceImpl teacherRepoService;
 
     public void getAllDetails(){
-        booksRepoService.getBooks();
-        CsvWrite.writeDataLineByLine("ActionTwo getBooks ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionTwo getBooks Start");
+            Collection<BookDto> bookDtos = booksRepoService.getBooks();
+            CsvWrite.writeDataLineByLine("ActionTwo getBooks Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionTwo Exception Fetching_Books"+e.getMessage());
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        eventsRepoService.getEvents();
-        CsvWrite.writeDataLineByLine("ActionTwo getEvents ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionTwo getEvents Start");
+            Collection<EventDto> eventDtos = eventsRepoService.getEvents();
+            CsvWrite.writeDataLineByLine("ActionTwo getEvents Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionTwo Exception Fetching_Events"+e.getMessage());
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        examsRepoService.getExams();
-        CsvWrite.writeDataLineByLine("ActionTwo getExams ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionTwo getExams Start");
+            Collection<ExamDto> examDtos =examsRepoService.getExams();
+            CsvWrite.writeDataLineByLine("ActionTwo getExams Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionTwo Exception Fetching_Exams"+e.getMessage());
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        managementRepoService.getManagement();
-        CsvWrite.writeDataLineByLine("ActionTwo getManagement ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionTwo getManagement Start");
+            Collection<ManagementDto> managementDtos =managementRepoService.getManagement();
+            CsvWrite.writeDataLineByLine("ActionTwo getManagement Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionTwo Exception Fetching_Management"+e.getMessage());
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        parentsRepoService.getParents();
-        CsvWrite.writeDataLineByLine("ActionTwo getParents ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionTwo getParents Start");
+            Collection<ParentDto> parentDtos =parentsRepoService.getParents();
+            CsvWrite.writeDataLineByLine("ActionTwo getParents Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionTwo Exception Fetching_Parents"+e.getMessage());
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        sportsRepoService.getSports();
-        CsvWrite.writeDataLineByLine("ActionTwo getSports ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionTwo getSports Start");
+            Collection<SportDto> sportDtos =sportsRepoService.getSports();
+            CsvWrite.writeDataLineByLine("ActionTwo getSports Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionTwo Exception Fetching_Sports"+e.getMessage());
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        studentRepoService.getStudents();
-        CsvWrite.writeDataLineByLine("ActionTwo getStudents ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionTwo getStudents Start");
+            Collection<StudentDto> studentDtos =studentRepoService.getStudents();
+            CsvWrite.writeDataLineByLine("ActionTwo getStudents Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionTwo Exception Fetching_Students"+e.getMessage());
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        teacherRepoService.getTeachers();
-        CsvWrite.writeDataLineByLine("ActionTwo getTeacher ");
+
+        try{
+            CsvWrite.writeDataLineByLine("ActionTwo getTeacher Start");
+            Collection<TeacherDto> teacherDtos = teacherRepoService.getTeachers();
+            CsvWrite.writeDataLineByLine("ActionTwo getTeacher Completed");
+        }catch (Exception e){
+            CsvWrite.writeDataLineByLine("ActionTwo Exception Fetching_Teacher"+e.getMessage());
+        }
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
