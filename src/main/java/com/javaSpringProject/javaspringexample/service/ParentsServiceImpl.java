@@ -2,12 +2,14 @@ package com.javaSpringProject.javaspringexample.service;
 
 import com.javaSpringProject.javaspringexample.Entity.Parents;
 import com.javaSpringProject.javaspringexample.repository.ParentRepo;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -27,8 +29,11 @@ public class ParentsServiceImpl {
        return parentRepo.findById(parentId);
     }
 
-    public Optional<Parents> updateParent(int parentId, Parents parent) {
-        Optional<Parents> parents = parentRepo.findById(parentId);
+    public Optional<Parents> updateParent(@NonNull Parents parent) {
+        if(Objects.isNull(parent.getParentId())){
+            return Optional.empty();
+        }
+        Optional<Parents> parents = parentRepo.findById(parent.getParentId());
         if (parents.isPresent()) {
             parents.get().setParentName(parent.getParentName());
             return Optional.of(parentRepo.save(parents.get()));

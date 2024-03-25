@@ -2,12 +2,14 @@ package com.javaSpringProject.javaspringexample.service;
 
 import com.javaSpringProject.javaspringexample.Entity.Student;
 import com.javaSpringProject.javaspringexample.repository.StudentRepo;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 @Service
 public class StudentServiceImpl  {
@@ -31,8 +33,11 @@ public class StudentServiceImpl  {
     }
 
 
-    public Optional<Student> updateStudent(int stdId, Student studentName) {
-        Optional<Student> students = studentRepo.findById(stdId);
+    public Optional<Student> updateStudent(@NonNull Student studentName) {
+        if(Objects.isNull(studentName.getStudentId())){
+            return Optional.empty();
+        }
+        Optional<Student> students = studentRepo.findById(studentName.getStudentId());
         if (students.isPresent()) {
             students.get().setStudentName(studentName.getStudentName());
             //stdRepo.save(students.get());

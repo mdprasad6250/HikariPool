@@ -2,6 +2,7 @@ package com.javaSpringProject.javaspringexample.Entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -18,9 +19,9 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name="Exams")
+@Builder
+@Table(name = "Exams")
 public class Exams {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Exam_Id")
@@ -31,5 +32,4 @@ public class Exams {
 
     @Column(name = "Exam_Results")
     private String examResults;
-    
 }

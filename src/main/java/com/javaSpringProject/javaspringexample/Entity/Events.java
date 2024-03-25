@@ -2,6 +2,7 @@ package com.javaSpringProject.javaspringexample.Entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -18,9 +19,9 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name="Events")
+@Builder
+@Table(name = "Events")
 public class Events {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Event_Id")
@@ -31,5 +32,4 @@ public class Events {
 
     @Column(name = "Event_Organizer")
     private String eventOrganizer;
-    
 }

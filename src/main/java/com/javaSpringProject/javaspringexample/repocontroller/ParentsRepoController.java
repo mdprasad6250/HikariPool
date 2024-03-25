@@ -27,8 +27,8 @@ public class ParentsRepoController {
     @PostMapping("/save-parent")
     public ResponseEntity<ParentDto> saveParent(@RequestBody ParentDto parents) {
         ParentDto saveParent = parentService.saveParent(parents);
-          return new ResponseEntity<>(saveParent,HttpStatus.CREATED);
-        }
+        return new ResponseEntity<>(saveParent, HttpStatus.CREATED);
+    }
 
     @GetMapping("/get-parent-details")
     public Collection<ParentDto> getParents() {
@@ -37,7 +37,7 @@ public class ParentsRepoController {
 
     @GetMapping("/get-parent/{parentId}")
     public ParentDto getParentById(@PathVariable int parentId) {
-       return parentService.getParentById(parentId);
+        return parentService.getParentById(parentId);
     }
 
     @PatchMapping("/update-parent/{parentId}")

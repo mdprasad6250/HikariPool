@@ -4,12 +4,14 @@ import com.javaSpringProject.javaspringexample.Dto.TeacherDto;
 import com.javaSpringProject.javaspringexample.Entity.Teacher;
 import com.javaSpringProject.javaspringexample.repository.TeacherRepo;
 import com.javaSpringProject.javaspringexample.util.MapperUtils;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -33,7 +35,10 @@ public class TeacherRepoServiceImpl {
         return TeacherDto.builder().build();
     }
 
-    public Optional<TeacherDto> updateTeacher(TeacherDto teacherDto) {
+    public Optional<TeacherDto> updateTeacher(@NonNull TeacherDto teacherDto) {
+        if(Objects.isNull(teacherDto.getTeacherId())){
+            return Optional.empty();
+        }
         Teacher teacher1 = MapperUtils.convertTeacherDtoToTeacherEntity(teacherDto);
         Optional<Teacher> teacher = teacherRepo.findById(teacher1.getTeacherId());
         if (teacher.isPresent()) {

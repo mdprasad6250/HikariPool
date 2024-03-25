@@ -13,9 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Builder
 public class SportDto {
-	private Integer sportId;
-
+    private Integer sportId;
     private String sportName;
-
     private String sportOrganizer;
 }

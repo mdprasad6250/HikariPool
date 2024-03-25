@@ -2,12 +2,14 @@ package com.javaSpringProject.javaspringexample.service;
 
 import com.javaSpringProject.javaspringexample.Entity.Book;
 import com.javaSpringProject.javaspringexample.repository.BookRepo;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -31,7 +33,10 @@ public class BooksServiceImpl {
        return bookRepo.findById(bookId);
     }
 
-    public Optional<Book> updateBook(Book bookName) {
+    public Optional<Book> updateBook(@NonNull Book bookName) {
+        if(Objects.isNull(bookName.getBookId())){
+            return Optional.empty();
+        }
         Optional<Book> books = bookRepo.findById(bookName.getBookId());
         if (books.isPresent()) {
             books.get().setBookName(bookName.getBookName());

@@ -40,9 +40,9 @@ public class ManagementController {
         return managementService.getManagementById(managementId);
     }
 
-    @PatchMapping("/update-management/{managementId}")
-    public Optional<Management> updateManagement(@PathVariable int managementId, @RequestBody Management management) {
-        return managementService.updateManagement(managementId, management);
+    @PatchMapping("/update-management")
+    public Optional<Management> updateManagement(@RequestBody Management management) {
+        return managementService.updateManagement(management);
     }
 
     @DeleteMapping("/delete-management/{managementId}")

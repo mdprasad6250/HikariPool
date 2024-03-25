@@ -24,12 +24,11 @@ public class EventController {
     @Autowired
     EventsServiceImpl eventsService;
 
-
     @PostMapping("/save-event")
     public ResponseEntity<Events> saveEvents(@RequestBody Events events) {
-          Events saveEvents = eventsService.saveEvent(events);
-          return new ResponseEntity<>(saveEvents,HttpStatus.CREATED);
-        }
+        Events saveEvents = eventsService.saveEvent(events);
+        return new ResponseEntity<>(saveEvents, HttpStatus.CREATED);
+    }
 
     @GetMapping("/get-event")
     public List<Events> getEvents(Events events) {
@@ -42,9 +41,9 @@ public class EventController {
         return eventsService.getEventsById(eventId);
     }
 
-    @PatchMapping("/update-event/{eventId}")
-    public Optional<Events> updateEvent(@PathVariable int eventId, @RequestBody Events eventName) {
-        return eventsService.updateEvents(eventId,eventName);
+    @PatchMapping("/update-event")
+    public Optional<Events> updateEvent(@RequestBody Events eventName) {
+        return eventsService.updateEvents(eventName);
     }
 
 
@@ -53,15 +52,4 @@ public class EventController {
 
         return eventsService.deleteEvents(eventId);
     }
-
 }
-
-
-
-
-
-
-
-
-
-

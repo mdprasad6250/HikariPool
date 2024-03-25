@@ -85,7 +85,7 @@ public class StudentDataTests {
        students.setStudentName("Anu");
        students.setRank("68");
         when(studentRepo.findById(anyInt())).thenReturn(Optional.of(students));
-        Optional<Student> student2=studentserviceimpl.updateStudent( 9,students);
+        Optional<Student> student2=studentserviceimpl.updateStudent( students);
         assertThat(student2).isNotEqualTo(students);
 
     }

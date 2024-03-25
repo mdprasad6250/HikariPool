@@ -10,33 +10,38 @@ public class UtilsMapper {
 
     /**
      * Used for one to one conversions for entity to dto or vice versa.
-     * @param from the object being converted from
+     *
+     * @param from    the object being converted from
      * @param toClass the object being converted to
-     * @param <T> class to be converted to
+     * @param <T>     class to be converted to
      * @return the converted object
      */
     public static <T> T map(Object from, Class<T> toClass) {
         return map(new ModelMapper(), from, toClass);
     }
+
     /**
      * Used for one to one conversions for entity to dto or vice versa.
-     * @param from the object being converted from
+     *
+     * @param from    the object being converted from
      * @param toClass the object being converted to
-     * @param <T> class to be converted to
+     * @param <T>     class to be converted to
      * @return the converted object
      */
     public static <T> T mapStrict(Object from, Class<T> toClass) {
-        ModelMapper modelMapper= new ModelMapper();
+        ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         return map(modelMapper, from, toClass);
     }
+
     /**
      * Used for complex mappings or for when you need to manipulate the data before setting it. See
      * AccountUtils.java for example
-     * @param mapper modelMapper containing complex mappings
-     * @param from the object being converted from
+     *
+     * @param mapper  modelMapper containing complex mappings
+     * @param from    the object being converted from
      * @param toClass the object being converted to
-     * @param <T> class to be converted to
+     * @param <T>     class to be converted to
      * @return the converted object
      */
     public static <T> T map(ModelMapper mapper, Object from, Class<T> toClass) {
@@ -63,5 +68,5 @@ public class UtilsMapper {
         }
 
         return mapper.map(from, toClass);
-    };
+    }
 }

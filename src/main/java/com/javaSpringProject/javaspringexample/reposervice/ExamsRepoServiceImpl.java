@@ -4,12 +4,14 @@ import com.javaSpringProject.javaspringexample.Dto.ExamDto;
 import com.javaSpringProject.javaspringexample.Entity.Exams;
 import com.javaSpringProject.javaspringexample.repository.ExamRepo;
 import com.javaSpringProject.javaspringexample.util.MapperUtils;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -33,7 +35,10 @@ public class ExamsRepoServiceImpl {
         return ExamDto.builder().build();
     }
 
-    public Optional<ExamDto> updateExam(ExamDto examDto) {
+    public Optional<ExamDto> updateExam(@NonNull ExamDto examDto) {
+        if(Objects.isNull(examDto.getExamId())){
+            return Optional.empty();
+        }
         Exams exams1 = MapperUtils.convertExamDtoToExamEntity(examDto);
         Optional<Exams> exams = examRepo.findById(exams1.getExamId());
         if (exams.isPresent()) {

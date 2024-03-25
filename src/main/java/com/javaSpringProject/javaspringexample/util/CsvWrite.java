@@ -19,9 +19,9 @@ public class CsvWrite {
     @Async
     public static void writeDataLineByLine(String data) {
         try {
-            outputfile = new FileWriter(file,true);
+            outputfile = new FileWriter(file, true);
             writer = new CSVWriter(outputfile);
-            data = (rowCount++) + " " + data+" "+ LocalDateTime.now().toLocalTime();
+            data = (rowCount++) + " " + data + " " + LocalDateTime.now().toLocalTime();
             String[] data1 = data.split(" ");
             writer.writeNext(data1);
             writer.close();

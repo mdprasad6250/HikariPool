@@ -41,9 +41,9 @@ public class SportController {
         return sportsService.getSportById(sportId);
     }
 
-    @PatchMapping("/update-sport/{sportId}")
-    public Optional<Sports> updateSport(@PathVariable int sportId, @RequestBody Sports sportName) {
-        return sportsService.updateSport(sportId, sportName);
+    @PatchMapping("/update-sport")
+    public Optional<Sports> updateSport(@RequestBody Sports sportName) {
+        return sportsService.updateSport(sportName);
     }
 
     @DeleteMapping("/delete-sport/{sportId}")

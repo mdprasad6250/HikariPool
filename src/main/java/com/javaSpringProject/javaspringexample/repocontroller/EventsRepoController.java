@@ -27,8 +27,8 @@ public class EventsRepoController {
     @PostMapping("/save-event")
     public ResponseEntity<EventDto> saveEvents(@RequestBody EventDto events) {
         EventDto saveEvents = eventsRepoService.saveEvent(events);
-          return new ResponseEntity<>(saveEvents,HttpStatus.CREATED);
-        }
+        return new ResponseEntity<>(saveEvents, HttpStatus.CREATED);
+    }
 
     @GetMapping("/get-event")
     public Collection<EventDto> getEvents() {

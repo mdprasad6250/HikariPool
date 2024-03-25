@@ -24,12 +24,11 @@ public class ParentController {
     @Autowired
     ParentsServiceImpl parentService;
 
-
     @PostMapping("/save-parent")
     public ResponseEntity<Parents> saveParent(@RequestBody Parents parents) {
-          Parents saveParent = parentService.saveParents(parents);
-          return new ResponseEntity<>(saveParent,HttpStatus.CREATED);
-        }
+        Parents saveParent = parentService.saveParents(parents);
+        return new ResponseEntity<>(saveParent, HttpStatus.CREATED);
+    }
 
     @GetMapping("/get-parent-details")
     public List<Parents> getParents(Parents parents) {
@@ -38,14 +37,13 @@ public class ParentController {
 
     @GetMapping("/get-parent/{parentId}")
     public Optional<Parents> getParentById(@PathVariable int parentId) {
-       return parentService.getParentById(parentId);
+        return parentService.getParentById(parentId);
     }
 
-    @PatchMapping("/update-parent/{parentId}")
-    public Optional<Parents> updateParent(@PathVariable int parentId, @RequestBody Parents parents) {
-        return parentService.updateParent(parentId,parents);
+    @PatchMapping("/update-parent")
+    public Optional<Parents> updateParent(@RequestBody Parents parents) {
+        return parentService.updateParent(parents);
     }
-
 
     @DeleteMapping("/delete-parent/{parentId}")
     public ResponseEntity<Void> deleteParent(@PathVariable int parentId) {
@@ -53,13 +51,3 @@ public class ParentController {
     }
 
 }
-
-
-
-
-
-
-
-
-
-

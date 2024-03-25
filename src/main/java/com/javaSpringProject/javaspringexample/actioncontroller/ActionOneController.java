@@ -25,89 +25,94 @@ public class ActionOneController {
 
     @Autowired
     ActionFourImpl actionFour;
-    
-    private static int count=0;
+
+    private static int count = 0;
 
     @GetMapping("/getData1")
     public void getData1() {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 Start");
         actionOne.getAllDetails();
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 End");
     }
 
 
     @GetMapping("/getData1/{iter}")
     public void getData1(@PathVariable Integer iter) {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 Start");
         actionOne.getAllDetails(iter);
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 End");
     }
 
     @GetMapping("/allOperations1/{iter}")
     public void allOperations1(@PathVariable Integer iter) {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") allOperations Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") allOperations Start");
         actionOne.allOperations(iter);
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") allOperations End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") allOperations End");
     }
     //==================================
 
     @GetMapping("/getData2")
     public void getData2() {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData2 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData2 Start");
         actionTwo.getAllDetails();
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData2 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData2 End");
     }
+
     @GetMapping("/getData2/{iter}")
     public void getData2(@PathVariable Integer iter) {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 Start");
         actionTwo.getAllDetails(iter);
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 End");
     }
 
     @GetMapping("/allOperations2/{iter}")
     public void allOperations2(@PathVariable Integer iter) {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 Start");
         actionTwo.allOperations(iter);
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 End");
     }
+
     //==================================
     @GetMapping("/getData3")
     public void getData3() {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData3 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData3 Start");
         actionThree.getAllDetails();
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData3 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData3 End");
     }
+
     @GetMapping("/getData3/{iter}")
     public void getData3(@PathVariable Integer iter) {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 Start");
         actionThree.getAllDetails(iter);
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 End");
     }
 
     @GetMapping("/allOperations3/{iter}")
     public void allOperations3(@PathVariable Integer iter) {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 Start");
         actionThree.allOperations(iter);
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 End");
     }
+
     //==================================
     @GetMapping("/getData4")
     public void getData4() {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData4 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData4 Start");
         actionFour.getAllDetails();
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData4 End");
-    }
-    @GetMapping("/getData4/{iter}")
-    public void getData4(@PathVariable Integer iter) {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
-        actionFour.getAllDetails(iter);
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData4 End");
     }
 
-    @GetMapping("/allOpeations4/{iter}")
+    @GetMapping("/getData4/{iter}")
+    public void getData4(@PathVariable Integer iter) {
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 Start");
+        actionFour.getAllDetails(iter);
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 End");
+    }
+
+    @GetMapping("/allOperations4/{iter}")
     public void allOperations4(@PathVariable Integer iter) {
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 Start");
         actionFour.allOperations(iter);
-        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+        CsvWrite.writeDataLineByLine("Controller(" + (++count) + ") getData1 End");
     }
 }

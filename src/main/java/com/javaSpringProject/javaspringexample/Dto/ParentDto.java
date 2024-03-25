@@ -12,9 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Builder
 public class ParentDto {
-	private Integer parentId;
-
+    private Integer parentId;
     private String parentName;
-
     private String parentFeedback;
 }

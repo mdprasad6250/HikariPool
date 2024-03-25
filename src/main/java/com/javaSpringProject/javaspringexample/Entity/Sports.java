@@ -2,6 +2,7 @@ package com.javaSpringProject.javaspringexample.Entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -18,7 +19,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name="Sports")
+@Builder
+@Table(name = "Sports")
 public class Sports {
 
     @Id
@@ -31,5 +33,4 @@ public class Sports {
 
     @Column(name = "Sport_Organizer")
     private String sportOrganizer;
-    
 }

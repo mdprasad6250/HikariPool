@@ -12,9 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Builder
 public class EventDto {
-	private Integer eventId;
-
+    private Integer eventId;
     private String eventName;
-
     private String eventOrganizer;
 }

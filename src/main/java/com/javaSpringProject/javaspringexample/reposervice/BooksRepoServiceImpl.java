@@ -4,12 +4,14 @@ import com.javaSpringProject.javaspringexample.Dto.BookDto;
 import com.javaSpringProject.javaspringexample.Entity.Book;
 import com.javaSpringProject.javaspringexample.repository.BookRepo;
 import com.javaSpringProject.javaspringexample.util.MapperUtils;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -33,7 +35,10 @@ public class BooksRepoServiceImpl {
         return BookDto.builder().build();
     }
 
-    public Optional<BookDto> updateBook(BookDto bookDto) {
+    public Optional<BookDto> updateBook(@NonNull BookDto bookDto) {
+        if(Objects.isNull(bookDto.getBookId())){
+            return Optional.empty();
+        }
         Book book1 = MapperUtils.convertBookDtoToBookEntity(bookDto);
         Optional<Book> book = bookRepo.findById(book1.getBookId());
         if (book.isPresent()) {

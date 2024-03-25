@@ -4,12 +4,14 @@ import com.javaSpringProject.javaspringexample.Dto.ManagementDto;
 import com.javaSpringProject.javaspringexample.Entity.Management;
 import com.javaSpringProject.javaspringexample.repository.ManagementRepo;
 import com.javaSpringProject.javaspringexample.util.MapperUtils;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -33,7 +35,10 @@ public class ManagementRepoServiceImpl {
         return ManagementDto.builder().build();
     }
 
-    public Optional<ManagementDto> updateManagement(ManagementDto managementDto) {
+    public Optional<ManagementDto> updateManagement(@NonNull ManagementDto managementDto) {
+        if(Objects.isNull(managementDto.getManagementId())){
+            return Optional.empty();
+        }
         Management management1 = MapperUtils.convertManagementDtoToManagementEntity(managementDto);
         Optional<Management> management = managementRepo.findById(management1.getManagementId());
         if (management.isPresent()) {

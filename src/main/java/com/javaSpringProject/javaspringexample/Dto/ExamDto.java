@@ -12,9 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Builder
 public class ExamDto {
-	private Integer examId;
-
+    private Integer examId;
     private String examName;
-
     private String examResults;
 }

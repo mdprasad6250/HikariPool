@@ -4,12 +4,14 @@ import com.javaSpringProject.javaspringexample.Dto.SportDto;
 import com.javaSpringProject.javaspringexample.Entity.Sports;
 import com.javaSpringProject.javaspringexample.repository.SportRepo;
 import com.javaSpringProject.javaspringexample.util.MapperUtils;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -33,7 +35,10 @@ public class SportsRepoServiceImpl {
         return SportDto.builder().build();
     }
 
-    public Optional<SportDto> updateSport(SportDto sportDto) {
+    public Optional<SportDto> updateSport(@NonNull SportDto sportDto) {
+        if(Objects.isNull(sportDto.getSportId())){
+            return Optional.empty();
+        }
         Sports sports1 = MapperUtils.convertSportsDtoToSportsEntity(sportDto);
         Optional<Sports> sports = sportRepo.findById(sports1.getSportId());
         if (sports.isPresent()) {

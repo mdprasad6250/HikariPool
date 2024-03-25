@@ -436,6 +436,7 @@ public class MapperUtils {
         }
         return UtilsMapper.map(STUDENT_DTO_TO_STUDENT_MODEL_MAPPER, studentDto, Student.class);
     }
+
     public static TeacherDto convertTeacherEntityToTeacherDto(Teacher teacherEntity) {
         if (Objects.isNull(teacherEntity)) {
             return TeacherDto.builder().build();

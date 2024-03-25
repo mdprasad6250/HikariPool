@@ -1,6 +1,7 @@
 package com.javaSpringProject.javaspringexample.Entity;
 
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name="Student")
+@Builder
+@Table(name = "Student")
 public class Student {
 
     @Id
@@ -29,5 +31,4 @@ public class Student {
 
     @Column(name = "rank")
     private String rank;
-    
 }

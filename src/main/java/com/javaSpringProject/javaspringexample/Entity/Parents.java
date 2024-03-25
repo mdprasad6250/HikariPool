@@ -2,6 +2,7 @@ package com.javaSpringProject.javaspringexample.Entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -18,7 +19,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name="Parents")
+@Builder
+@Table(name = "Parents")
 public class Parents {
 
     @Id
@@ -31,5 +33,4 @@ public class Parents {
 
     @Column(name = "Parent_Feedback")
     private String parentFeedback;
-    
 }

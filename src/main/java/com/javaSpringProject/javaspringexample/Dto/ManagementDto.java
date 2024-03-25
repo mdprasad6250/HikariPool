@@ -14,11 +14,7 @@ import javax.persistence.Column;
 @Component
 @Builder
 public class ManagementDto {
-
     private Integer managementId;
-
     private String managementName;
-
     private String managementHead;
-
 }

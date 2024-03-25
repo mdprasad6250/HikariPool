@@ -4,12 +4,14 @@ import com.javaSpringProject.javaspringexample.Dto.ParentDto;
 import com.javaSpringProject.javaspringexample.Entity.Parents;
 import com.javaSpringProject.javaspringexample.repository.ParentRepo;
 import com.javaSpringProject.javaspringexample.util.MapperUtils;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -34,7 +36,10 @@ public class ParentsRepoServiceImpl {
         return ParentDto.builder().build();
     }
 
-    public Optional<ParentDto> updateParent(ParentDto parentDto) {
+    public Optional<ParentDto> updateParent(@NonNull ParentDto parentDto) {
+        if(Objects.isNull(parentDto.getParentId())){
+            return Optional.empty();
+        }
         Parents parents1 = MapperUtils.convertParentDtoToParentEntity(parentDto);
         Optional<Parents> parents = parentRepo.findById(parents1.getParentId());
         if (parents.isPresent()) {

@@ -27,8 +27,8 @@ public class ManagementRepoController {
     @PostMapping("/save-management")
     public ResponseEntity<ManagementDto> saveManagement(@RequestBody ManagementDto management) {
         ManagementDto saveManagement = managementRepoService.saveManagement(management);
-          return new ResponseEntity<>(saveManagement,HttpStatus.CREATED);
-        }
+        return new ResponseEntity<>(saveManagement, HttpStatus.CREATED);
+    }
 
     @GetMapping("/get-management-details")
     public Collection<ManagementDto> getManagement(ManagementDto management) {
@@ -37,7 +37,7 @@ public class ManagementRepoController {
 
     @GetMapping("/get-management/{managementId}")
     public ManagementDto getManagementById(@PathVariable int managementId) {
-       return managementRepoService.getManagementById(managementId);
+        return managementRepoService.getManagementById(managementId);
     }
 
     @PatchMapping("/update-management/{managementId}")

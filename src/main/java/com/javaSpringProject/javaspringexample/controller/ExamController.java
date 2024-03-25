@@ -24,12 +24,11 @@ public class ExamController {
     @Autowired
     ExamsServiceImpl examsService;
 
-
     @PostMapping("/save-exam")
     public ResponseEntity<Exams> saveExam(@RequestBody Exams exams) {
-          Exams saveExam = examsService.saveExam(exams);
-          return new ResponseEntity<>(saveExam,HttpStatus.CREATED);
-        }
+        Exams saveExam = examsService.saveExam(exams);
+        return new ResponseEntity<>(saveExam, HttpStatus.CREATED);
+    }
 
     @GetMapping("/get-exam-details")
     public List<Exams> getExams(Exams exams) {
@@ -38,28 +37,16 @@ public class ExamController {
 
     @GetMapping("/get-exam-details/{examId}")
     public Optional<Exams> getExamById(@PathVariable int examId) {
-       return examsService.getExamsById(examId);
+        return examsService.getExamsById(examId);
     }
 
-    @PatchMapping("/update-exam/{examId}")
+    @PatchMapping("/update-exam")
     public Optional<Exams> updateExams(@PathVariable int examId, @RequestBody Exams exams) {
-        return examsService.updateExam(examId,exams);
+        return examsService.updateExam(exams);
     }
-
 
     @DeleteMapping("/delete-exam/{examId}")
     public ResponseEntity<Void> deleteExamById(@PathVariable int examId) {
         return examsService.deleteExam(examId);
     }
-
 }
-
-
-
-
-
-
-
-
-
-

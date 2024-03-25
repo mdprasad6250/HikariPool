@@ -4,12 +4,14 @@ import com.javaSpringProject.javaspringexample.Dto.StudentDto;
 import com.javaSpringProject.javaspringexample.Entity.Student;
 import com.javaSpringProject.javaspringexample.repository.StudentRepo;
 import com.javaSpringProject.javaspringexample.util.MapperUtils;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -33,7 +35,10 @@ public class StudentRepoServiceImpl {
         return StudentDto.builder().build();
     }
 
-    public Optional<StudentDto> updateStudent(StudentDto studentDto) {
+    public Optional<StudentDto> updateStudent(@NonNull StudentDto studentDto) {
+        if(Objects.isNull(studentDto.getStudentId())){
+            return Optional.empty();
+        }
         Student student1 = MapperUtils.convertStudentDtoToStudentEntity(studentDto);
         Optional<Student> student = studentRepo.findById(student1.getStudentId());
         if (student.isPresent()) {

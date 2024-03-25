@@ -40,9 +40,9 @@ public class TeacherController {
         return teacherService.getTeacherById(teacherId);
     }
 
-    @PatchMapping("/update-teacher/{teacherId}")
-    public Optional<Teacher> updateTeacher(@PathVariable int teacherId, @RequestBody Teacher teacherName) {
-        return teacherService.updateTeacher(teacherId, teacherName);
+    @PatchMapping("/update-teacher")
+    public Optional<Teacher> updateTeacher(@RequestBody Teacher teacherName) {
+        return teacherService.updateTeacher(teacherName);
     }
 
     @DeleteMapping("/delete-teacher/{teacherId}")

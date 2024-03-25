@@ -2,12 +2,14 @@ package com.javaSpringProject.javaspringexample.service;
 
 import com.javaSpringProject.javaspringexample.Entity.Events;
 import com.javaSpringProject.javaspringexample.repository.EventRepo;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -27,8 +29,11 @@ public class EventsServiceImpl {
        return eventRepo.findById(eventId);
     }
 
-    public Optional<Events> updateEvents(int eventId, Events eventName) {
-        Optional<Events> events = eventRepo.findById(eventId);
+    public Optional<Events> updateEvents(@NonNull Events eventName) {
+        if(Objects.isNull(eventName.getEventId())){
+            return Optional.empty();
+        }
+        Optional<Events> events = eventRepo.findById(eventName.getEventId());
         if (events.isPresent()) {
             events.get().setEventName(eventName.getEventName());
             return Optional.of(eventRepo.save(events.get()));
