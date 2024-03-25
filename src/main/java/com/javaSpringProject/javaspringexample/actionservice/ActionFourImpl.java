@@ -20,7 +20,7 @@ import com.javaSpringProject.javaspringexample.util.CsvWrite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
@@ -32,7 +32,7 @@ public class ActionFourImpl {
     @Autowired
     private ExamsServiceImpl examsService;
     @Autowired
-    private ManagementServiceImpl managementRepoService;
+    private ManagementServiceImpl managementService;
     @Autowired
     private ParentsServiceImpl parentsService;
     @Autowired
@@ -41,16 +41,133 @@ public class ActionFourImpl {
     private StudentServiceImpl studentService;
     @Autowired
     private TeacherServiceImpl teacherService;
+    private final long sleepTime = 1;
+    
+    public void getAllDetails(Integer iter){
+        Collection<Collection<Book>> books = new ArrayList<>(iter);
+        Collection<Collection<Events>> events = new ArrayList<>(iter);
+        Collection<Collection<Exams>> exams = new ArrayList<>(iter);
+        Collection<Collection<Management>> managements = new ArrayList<>(iter);
+        Collection<Collection<Parents>> parents = new ArrayList<>(iter);
+        Collection<Collection<Sports>> sports = new ArrayList<>(iter);
+        Collection<Collection<Student>> students = new ArrayList<>(iter);
+        Collection<Collection<Teacher>> teachers = new ArrayList<>(iter);
+        for (int i=0;i<iter;i++){
+            try{
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getBooks Start");
+                books.add(booksService.getBooks());
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getBooks Completed");
+            }catch (Exception e){
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  Exception Fetching_Books"+e.getMessage().replace(' ','_'));
+            }
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            try{
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getEvents Start");
+                events.add(eventsService.getEvents());
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getEvents Completed");
+            }catch (Exception e){
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  Exception Fetching_Events"+e.getMessage().replace(' ','_'));
+            }
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            try{
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getExams Start");
+                exams.add(examsService.getExams());
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getExams Completed");
+            }catch (Exception e){
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  Exception Fetching_Exams"+e.getMessage().replace(' ','_'));
+            }
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            try{
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getManagement Start");
+                managements.add(managementService.getManagement());
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getManagement Completed");
+            }catch (Exception e){
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  Exception Fetching_Management"+e.getMessage().replace(' ','_'));
+            }
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            try{
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getParents Start");
+                parents.add(parentsService.getParents());
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getParents Completed");
+            }catch (Exception e){
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  Exception Fetching_Parents"+e.getMessage().replace(' ','_'));
+            }
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            try{
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getSports Start");
+                sports.add(sportsService.getSports());
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getSports Completed");
+            }catch (Exception e){
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  Exception Fetching_Sports"+e.getMessage().replace(' ','_'));
+            }
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            try{
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getStudents Start");
+                students.add(studentService.getStudents());
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getStudents Completed");
+            }catch (Exception e){
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  Exception Fetching_Students"+e.getMessage().replace(' ','_'));
+            }
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            try{
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getTeacher Start");
+                teachers.add(teacherService.getTeachers());
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  getTeacher Completed");
+            }catch (Exception e){
+                CsvWrite.writeDataLineByLine("ActionFour(Iteration:"+ i +")  Exception Fetching_Teacher"+e.getMessage().replace(' ','_'));
+            }
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
     public void getAllDetails(){
         try{
             CsvWrite.writeDataLineByLine("ActionFour getBooks Start");
             Collection<Book> books = booksService.getBooks();
             CsvWrite.writeDataLineByLine("ActionFour getBooks Completed");
         }catch (Exception e){
-            CsvWrite.writeDataLineByLine("ActionFour Exception Fetching_Books");
+            CsvWrite.writeDataLineByLine("ActionFour Exception Fetching_Books"+e.getMessage().replace(' ','_'));
         }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -63,7 +180,7 @@ public class ActionFourImpl {
             CsvWrite.writeDataLineByLine("ActionFour Exception Fetching_Events"+e.getMessage().replace(' ','_'));
         }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -76,20 +193,20 @@ public class ActionFourImpl {
             CsvWrite.writeDataLineByLine("ActionFour Exception Fetching_Exams"+e.getMessage().replace(' ','_'));
         }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
         try{
             CsvWrite.writeDataLineByLine("ActionFour getManagement Start");
-            Collection<Management> managements = managementRepoService.getManagement();
+            Collection<Management> managements = managementService.getManagement();
             CsvWrite.writeDataLineByLine("ActionFour getManagement Completed");
         }catch (Exception e){
             CsvWrite.writeDataLineByLine("ActionFour Exception Fetching_Management"+e.getMessage().replace(' ','_'));
         }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -102,7 +219,7 @@ public class ActionFourImpl {
             CsvWrite.writeDataLineByLine("ActionFour Exception Fetching_Parents"+e.getMessage().replace(' ','_'));
         }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -115,7 +232,7 @@ public class ActionFourImpl {
             CsvWrite.writeDataLineByLine("ActionFour Exception Fetching_Sports"+e.getMessage().replace(' ','_'));
         }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -128,7 +245,7 @@ public class ActionFourImpl {
             CsvWrite.writeDataLineByLine("ActionFour Exception Fetching_Students"+e.getMessage().replace(' ','_'));
         }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -141,7 +258,7 @@ public class ActionFourImpl {
             CsvWrite.writeDataLineByLine("ActionFour Exception Fetching_Teachers"+e.getMessage().replace(' ','_'));
         }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

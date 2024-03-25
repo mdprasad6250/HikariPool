@@ -26,7 +26,7 @@ public class CsvWrite {
             writer.writeNext(data1);
             writer.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 }
