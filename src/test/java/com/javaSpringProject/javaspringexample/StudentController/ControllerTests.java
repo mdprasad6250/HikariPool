@@ -32,7 +32,7 @@ public class ControllerTests {
         StudentDto studentDto = new StudentDto();
         studentDto.setStudentId(2);
         studentDto.setStudentName("Nikki");
-        studentDto.setStudentMarks(65);
+        studentDto.setRank("65");
         Mockito.when(studentService.saveStudent(Mockito.any())).thenReturn((studentService.saveStudent(students)));
         Assertions.assertNotNull(studentcontroller.saveStudent(students));
     }

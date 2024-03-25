@@ -42,6 +42,13 @@ public class ActionOneController {
         actionOne.getAllDetails(iter);
         CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
     }
+
+    @GetMapping("/allOperations1/{iter}")
+    public void allOperations1(@PathVariable Integer iter) {
+        CsvWrite.writeDataLineByLine("Controller("+(++count)+") allOperations Start");
+        actionOne.allOperations(iter);
+        CsvWrite.writeDataLineByLine("Controller("+(++count)+") allOperations End");
+    }
     //==================================
 
     @GetMapping("/getData2")
@@ -54,6 +61,13 @@ public class ActionOneController {
     public void getData2(@PathVariable Integer iter) {
         CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
         actionTwo.getAllDetails(iter);
+        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+    }
+
+    @GetMapping("/allOperations2/{iter}")
+    public void allOperations2(@PathVariable Integer iter) {
+        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        actionTwo.allOperations(iter);
         CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
     }
     //==================================
@@ -69,6 +83,13 @@ public class ActionOneController {
         actionThree.getAllDetails(iter);
         CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
     }
+
+    @GetMapping("/allOperations3/{iter}")
+    public void allOperations3(@PathVariable Integer iter) {
+        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        actionThree.allOperations(iter);
+        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+    }
     //==================================
     @GetMapping("/getData4")
     public void getData4() {
@@ -80,6 +101,13 @@ public class ActionOneController {
     public void getData4(@PathVariable Integer iter) {
         CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
         actionFour.getAllDetails(iter);
+        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
+    }
+
+    @GetMapping("/allOpeations4/{iter}")
+    public void allOperations4(@PathVariable Integer iter) {
+        CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 Start");
+        actionFour.allOperations(iter);
         CsvWrite.writeDataLineByLine("Controller("+(++count)+") getData1 End");
     }
 }

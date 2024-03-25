@@ -25,6 +25,7 @@ import org.modelmapper.convention.MatchingStrategies;
 
 import java.util.Collection;
 import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -456,6 +457,17 @@ public class MapperUtils {
             throw new IllegalArgumentException();
         }
         return UtilsMapper.map(TEACHER_DTO_TO_TEACHER_MODEL_MAPPER, teacherDto, Teacher.class);
+    }
+
+    public static String generateRandomString(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder randomString = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(characters.length());
+            randomString.append(characters.charAt(randomIndex));
+        }
+        return randomString.toString();
     }
 
 }
